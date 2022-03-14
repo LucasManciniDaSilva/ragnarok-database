@@ -1,0 +1,13 @@
+{
+	"video": false,
+	"defaultCommandTimeout": 10000,
+	"testFiles": "**/*.{feature,features}",
+	"ignoreTestFiles": ["*.js", "*.md"],
+	"projectId": "tsrsv",
+	"screenshotsFolder": "cypress/screenshots",
+	"baseUrl": "https://dev-api.elo.com.br/payment/qr/v2",
+	"baseUrlEcwL": "https://dev-api.elo.com.br/payment/ecwl/v1",
+	"webhook": "https://webhook.site",
+	"viewportHeight": 600,
+	"viewportWidth": 1000
+}
