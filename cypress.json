@@ -5,7 +5,7 @@
 	"ignoreTestFiles": ["*.js", "*.md"],
 	"projectId": "tsrsv",
 	"screenshotsFolder": "cypress/screenshots",
-	"baseUrl": "https://dev-api.elo.com.br/payment/qr/v2",
+	"baseUrl": "https://playragnarokonlinebr.com/database/thor",
 	"viewportHeight": 600,
 	"viewportWidth": 1000
 }

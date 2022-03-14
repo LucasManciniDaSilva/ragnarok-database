@@ -1,7 +1,6 @@
 import "./commands";
 import addContext from "mochawesome/addContext";
 import "@shelex/cypress-allure-plugin";
-import "@bahmutov/cy-api/support";
 
 Cypress.on("test:after:run", (test, runnable) => {
   if (test.state === "failed") {
