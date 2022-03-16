@@ -1,6 +1,8 @@
 defineStep(/^I am on the Ragnarok Database page$/, () => {
   cy.visit(Cypress.config().baseUrl);
   cy.url().should("include", "/database/thor");
+  cy.clearCookies({ log: true });
+  cy.clearLocalStorage("your item", { log: true });
 });
 
 defineStep(
@@ -15,3 +17,12 @@ defineStep(/^Search monster by name (.*)$/, (monster) => {
   cy.get("#input-monsters").clear();
   cy.get("#input-monsters").type(monster).type("{enter}");
 });
+
+defineStep(
+  /^I am on the Ragnarok Database page using a "([^"]*)"$/,
+  (mobile) => {
+    cy.viewport(mobile);
+    cy.visit(Cypress.config().baseUrl);
+    cy.url().should("include", "/database/thor");
+  }
+);
