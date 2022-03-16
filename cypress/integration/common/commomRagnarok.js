@@ -10,3 +10,8 @@ defineStep(
     cy.get("h1").should("contain", title);
   }
 );
+
+defineStep(/^Search monster by name (.*)$/, (monster) => {
+  cy.get("#input-monsters").clear();
+  cy.get("#input-monsters").type(monster).type("{enter}");
+});
