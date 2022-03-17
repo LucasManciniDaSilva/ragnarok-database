@@ -1,7 +1,5 @@
 And(/^Search monster by name (.*)$/, (monster) => {
-  cy.get("#input-monsters").as("inputMonsters");
-  cy.get("@inputMonsters").clear();
-  cy.get("@inputMonsters").type(monster).type("{enter}");
+  cy.searchMonster(monster);
 });
 
 Then(/^I should see the monster (.*)$/, (monster) => {

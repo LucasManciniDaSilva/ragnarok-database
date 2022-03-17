@@ -25,7 +25,7 @@ And(/^Search weapon by name Espada/, () => {
     const searchItem = search.weaponName;
     cy.get("#input-itens").as("itens");
     cy.get("@itens").clear();
-    cy.get("@itens").type(searchItem).type("{enter}");
+    cy.get("@itens").type(`${searchItem} {enter}`).type("{enter}");
   });
 });
 

@@ -12,3 +12,9 @@ Cypress.Commands.add("attFileAllure", (obj, type, information) => {
     "text/plain"
   );
 });
+
+Cypress.Commands.add("searchMonster", (monster) => {
+  cy.get("#input-monsters").as("inputMonsters");
+  cy.get("@inputMonsters").clear();
+  cy.get("@inputMonsters").type(`${monster} {enter}`);
+});
