@@ -13,9 +13,12 @@ defineStep(
   }
 );
 
-defineStep(/^Search monster by name (.*)$/, (monster) => {
-  cy.get("#input-monsters").clear();
-  cy.get("#input-monsters").type(monster).type("{enter}");
+defineStep(/^Search monster by name Aliot/, () => {
+  cy.fixture("search").then((search) => {
+    const searchMonster = search.monsterName;
+    cy.get("#input-monsters").clear();
+    cy.get("#input-monsters").type(searchMonster).type("{enter}");
+  });
 });
 
 defineStep(

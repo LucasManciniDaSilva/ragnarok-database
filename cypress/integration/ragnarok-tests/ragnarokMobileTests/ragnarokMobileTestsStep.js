@@ -20,10 +20,13 @@ And(/^I Click on advanced search and click on "([^"]*)" type$/, (type) => {
   cy.get(".specified-filter").contains(type).click();
 });
 
-And(/^Search weapon by name (.*)$/, (weapon) => {
-  cy.get("#input-itens").as("itens");
-  cy.get("@itens").clear();
-  cy.get("@itens").type(weapon).type("{enter}");
+And(/^Search weapon by name Espada/, () => {
+  cy.fixture("search").then((search) => {
+    const searchItem = search.weaponName;
+    cy.get("#input-itens").as("itens");
+    cy.get("@itens").clear();
+    cy.get("@itens").type(searchItem).type("{enter}");
+  });
 });
 
 Then(/^I verify if returned the message "([^"]*)"$/, (message) => {
