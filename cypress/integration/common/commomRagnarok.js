@@ -1,6 +1,26 @@
+class BasePage {
+  static loadHomepage(url) {
+    cy.visit(url);
+  }
+
+  static urlShouldInclude(text) {
+    cy.url().should("include", text);
+  }
+}
+
+class RagnarokPage extends BasePage {
+  static clickOnElementAndButton(element, button) {
+    cy.get(element).contains(button).click();
+  }
+
+  static elementShouldInclude(element, text) {
+    cy.get(element).should("include", text);
+  }
+}
+
 defineStep(/^I am on the Ragnarok Database page$/, () => {
-  cy.visit(Cypress.config().baseUrl);
-  cy.url().should("include", "/database/thor");
+  RagnarokPage.loadHomepage(Cypress.config().baseUrl);
+  RagnarokPage.urlShouldInclude("/database/thor");
   cy.clearCookies({ log: true });
   cy.clearLocalStorage("your item", { log: true });
 });
@@ -8,8 +28,8 @@ defineStep(/^I am on the Ragnarok Database page$/, () => {
 defineStep(
   /^Click on "([^"]*)" and check if the title of the page is "([^"]*)"$/,
   (button, title) => {
-    cy.get("a").contains(button).click();
-    cy.get("h1").should("contain", title);
+    RagnarokPage.clickOnElementAndButton("a", button);
+    RagnarokPage.elementShouldInclude("h1", title);
   }
 );
 
@@ -25,7 +45,7 @@ defineStep(
   /^I am on the Ragnarok Database page using a "([^"]*)"$/,
   (mobile) => {
     cy.viewport(mobile);
-    cy.visit(Cypress.config().baseUrl);
-    cy.url().should("include", "/database/thor");
+    RagnarokPage.loadHomepage(Cypress.config().baseUrl);
+    RagnarokPage.urlShouldInclude("/database/thor");
   }
 );

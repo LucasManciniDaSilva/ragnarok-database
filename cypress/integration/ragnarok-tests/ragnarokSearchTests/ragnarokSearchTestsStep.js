@@ -28,3 +28,15 @@ And(/^I choose the type option "([^"]*)"$/, (type) => {
   cy.get('select[name="categoria"]').should("have.value", type);
   cy.screenshot();
 });
+
+Then(
+  /^Search monster in the page "([^"]*)" and scrolling into view$/,
+  (monster) => {
+    cy.get("h5").contains(monster).as("monster");
+    cy.get("@monster").scrollIntoView();
+    cy.wait(5000);
+    cy.get("@monster").click();
+    cy.wait(5000);
+    cy.screenshot();
+  }
+);
