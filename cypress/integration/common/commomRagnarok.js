@@ -14,7 +14,7 @@ class RagnarokPage extends BasePage {
   }
 
   static elementShouldInclude(element, text) {
-    cy.get(element).should("include", text);
+    cy.get(element).contains(text);
   }
 }
 
@@ -36,8 +36,7 @@ defineStep(
 defineStep(/^Search monster by name Aliot/, () => {
   cy.fixture("search").then((search) => {
     const searchMonster = search.monsterName;
-    cy.get("#input-monsters").clear();
-    cy.get("#input-monsters").type(`${searchMonster} {enter}`);
+    cy.searchMonster(searchMonster);
   });
 });
 

@@ -1,3 +1,17 @@
+declare namespace Cypress {
+  interface Chainable<Subject> {
+    /**
+     * Create a txt file and add to allure report
+     */
+    attFileAllure(fileName: string, filePath: string, information: string): Chainable<Subject>;
+  }
+}
+
+
+
+/**
+ * Create a txt file and add to allure report
+ */
 Cypress.Commands.add("attFileAllure", (obj, type, information) => {
   const timestamp = Date.now();
 
@@ -11,10 +25,4 @@ Cypress.Commands.add("attFileAllure", (obj, type, information) => {
     `cypress/files/api/${type}_${timestamp}_${information}.txt`,
     "text/plain"
   );
-});
-
-Cypress.Commands.add("searchMonster", (monster) => {
-  cy.get("#input-monsters").as("inputMonsters");
-  cy.get("@inputMonsters").clear();
-  cy.get("@inputMonsters").type(`${monster} {enter}`);
 });

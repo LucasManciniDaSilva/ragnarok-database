@@ -3,18 +3,15 @@ And(/^Search monster by name (.*)$/, (monster) => {
 });
 
 Then(/^I should see the monster (.*)$/, (monster) => {
-  cy.get(".monstros.show").should("contain", monster);
-  cy.screenshot();
+  cy.shouldCheckMonsterName(monster);
 });
 
 And(/^I Click on advanced search and click on "([^"]*)" type$/, (type) => {
-  cy.get("#nav-button").click();
-  cy.get(".specified-filter").contains(type).click();
+  cy.chooseType(type);
 });
 
 Then(/^I verify if returned the message "([^"]*)"$/, (message) => {
-  cy.get(".title1").should("contain", message);
-  cy.screenshot();
+  cy.verifyErrorMessage(message);
 });
 
 And(/^I choose the size option "([^"]*)"$/, (size) => {

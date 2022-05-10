@@ -1,6 +1,10 @@
-import "./commands";
 import addContext from "mochawesome/addContext";
 import "@shelex/cypress-allure-plugin";
+import "./app"
+import "./pageActions"
+import "./searchActions"
+import "./app"
+require("cypress-xpath");
 
 Cypress.on("test:after:run", (test, runnable) => {
   if (test.state === "failed") {

@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"allowJs": true,
+		"typeScript": true,
 		"baseUrl": "../node_modules",
 		"types": ["cypress"],
 		"reporter": "cypress-multi-reporters",

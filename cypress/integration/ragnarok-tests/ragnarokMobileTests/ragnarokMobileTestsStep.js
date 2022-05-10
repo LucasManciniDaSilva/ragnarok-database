@@ -1,35 +1,26 @@
 Given(/^I am on the Ragnarok Database page on (.*)$/, (mobile) => {
-  cy.viewport(mobile);
-  cy.visit(Cypress.config().baseUrl);
-  cy.url().should("include", "/database/thor");
+  cy.mobileVersion(mobile);
 });
 
 And(/^Search weapon by name (.*)$/, (weapon) => {
-  cy.get("#input-itens").as("itens");
-  cy.get("@itens").clear();
-  cy.get("@itens").type(weapon).type("{enter}");
+  cy.searchWeapon(weapon);
 });
 
 Then(/^I should see the weapon (.*)$/, (weapon) => {
-  cy.get(".armamentos.show").should("contain", weapon);
-  cy.screenshot();
+  cy.shouldCheckWeaponName(weapon);
 });
 
 And(/^I Click on advanced search and click on "([^"]*)" type$/, (type) => {
-  cy.get("#nav-button").click();
-  cy.get(".specified-filter").contains(type).click();
+  cy.chooseType(type);
 });
 
 And(/^Search weapon by name Espada/, () => {
   cy.fixture("search").then((search) => {
-    const searchItem = search.weaponName;
-    cy.get("#input-itens").as("itens");
-    cy.get("@itens").clear();
-    cy.get("@itens").type(`${searchItem} {enter}`).type("{enter}");
+    const weaponName = search.weaponName;
+    cy.searchWeapon(weaponName);
   });
 });
 
 Then(/^I verify if returned the message "([^"]*)"$/, (message) => {
-  cy.get(".title1").should("contain", message);
-  cy.screenshot();
+  cy.verifyErrorMessage(message);
 });
