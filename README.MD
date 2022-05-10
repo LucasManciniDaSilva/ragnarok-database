@@ -1,8 +1,6 @@
 # Overview
 
-Automation project for
-[PokemonTeam](https://github.com/LucasManciniDaSilva/PokemonTeam) using Cypress,
-Cucumber and Allure.
+Automation project for website [Ragnarok-br](https://playragnarokonlinebr.com/database/thor)
 
 ## Stack
 
