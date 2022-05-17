@@ -1,6 +1,9 @@
 const cucumber = require("cypress-cucumber-preprocessor").default;
 const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 const browserify = require("@cypress/browserify-preprocessor");
+const {
+  addMatchImageSnapshotPlugin,
+} = require("cypress-image-snapshot/plugin");
 require("dotenv").config();
 
 module.exports = (on, config) => {
@@ -10,6 +13,7 @@ module.exports = (on, config) => {
   };
   on("file:preprocessor", cucumber(options));
   allureWriter(on, config);
+  addMatchImageSnapshotPlugin(on, config);
 
   config.env.clientId = process.env.CYPRESS_CLIENT_ID;
   config.env.authorization = process.env.CYPRESS_AUTHORIZATION;

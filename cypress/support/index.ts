@@ -5,6 +5,8 @@ import "./pageActions"
 import "./searchActions"
 import "./app"
 require("cypress-xpath");
+import { addMatchImageSnapshotCommand } from "cypress-image-snapshot/command";
+addMatchImageSnapshotCommand();
 
 Cypress.on("test:after:run", (test, runnable) => {
   if (test.state === "failed") {

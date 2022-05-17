@@ -18,7 +18,7 @@ declare namespace Cypress {
     /**
      * @param type - Type of search (item, monster, item, equip )
      */
-     chooseType(type: string): Chainable<Subject>;
+     chooseMonsterType(type: string): Chainable<Subject>;
 
     /**
      * @param message - Error message to return
@@ -36,11 +36,6 @@ declare namespace Cypress {
 Cypress.Commands.add("shouldCheckWeaponName", (weapon) => {
   cy.get(".armamentos.show").should("contain", weapon);
   cy.screenshot();
-});
-
-Cypress.Commands.add("chooseType", (type) => {
-  cy.get("#nav-button").click();
-  cy.get(".specified-filter").contains(type).click();
 });
 
 Cypress.Commands.add("verifyErrorMessage", (message) => {

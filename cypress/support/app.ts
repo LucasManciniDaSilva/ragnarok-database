@@ -4,6 +4,11 @@ declare namespace Cypress {
      * Create a txt file and add to allure report
      */
     attFileAllure(fileName: string, filePath: string, information: string): Chainable<Subject>;
+
+    /**
+     * ScrollIntoView the monster
+     */
+     scrollIntoViewMonster(monster: string): Chainable<Subject>;
   }
 }
 
@@ -26,3 +31,17 @@ Cypress.Commands.add("attFileAllure", (obj, type, information) => {
     "text/plain"
   );
 });
+
+/**
+ * scroll to see the monster
+ */
+
+Cypress.Commands.add("scrollIntoViewMonster", (monster) => {
+  cy.get("h5").contains(monster).as("monster");
+  cy.get("@monster").scrollIntoView();
+  cy.wait(5000);
+  cy.get("@monster").click();
+  cy.wait(5000);
+  cy.screenshot();
+});
+

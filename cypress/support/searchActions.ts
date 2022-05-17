@@ -9,6 +9,21 @@ declare namespace Cypress {
      * @param weaponName - The name of the weapon to search
      */
     searchWeapon(weaponName: string): Chainable<Subject>;
+
+    /**
+     * @param size - size of the monster or item
+     */
+     chooseSizeOption(size: string): Chainable<Subject>;
+
+    /**
+     * @param type - type of the monster or item
+     */
+     chooseTypeOption(type: string): Chainable<Subject>;
+
+    /**
+     * @param type - Type of search (item, monster, item, equip )
+     */
+     chooseCategoryType(type: string): Chainable<Subject>;
   }
 }
 
@@ -29,4 +44,30 @@ declare namespace Cypress {
   cy.get("@itens").clear();
   cy.get("@itens").type(weapon).type("{enter}");
 });
+
+/**
+ * Choose the size of the monster or item
+ */
+Cypress.Commands.add("chooseSizeOption", (size) => {
+  cy.get('select[name="tamanho"]').select(size);
+  cy.get('select[name="tamanho"]').should("have.value", 2);
+  cy.screenshot();
+});
+
+/**
+ * Choose the type of weapon
+ */
+
+Cypress.Commands.add("chooseTypeOption", (type) => {
+  cy.get('select[name="categoria"]').select(type);
+  cy.get('select[name="categoria"]').should("have.value", type);
+  cy.screenshot();
+});
+
+Cypress.Commands.add("chooseCategoryType", (type) => {
+  cy.get("#nav-button").click();
+  cy.get(".specified-filter").contains(type).click();
+});
+
+
 
