@@ -1,7 +1,7 @@
 import WeaponPage from "../../../../page-objects/pages/WeaponPage";
 
 Given(/^I am on the Ragnarok Database page on (.*)$/, (mobile) => {
-  WeaponPage.mobileType(mobile);
+  WeaponPage.mobileType(mobile, Cypress.config().baseUrl, "database/thor");
 });
 
 And(/^Search weapon by name (.*)$/, (weapon) => {

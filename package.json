@@ -9,7 +9,9 @@
     "scenario:run": "npx cypress run --env",
     "cy:all": "cypress run --spec **/*.features",
     "cy:run": "cypress run",
-    "allure": "mv allure-report/history allure-results ;rm -rf cypress/files ; npx cypress run --env allure=true  ; allure generate allure-results --clean"
+    "cy:update": "cypress run --env updateSnapshot=true",
+    "allure": "mv allure-report/history allure-results ;rm -rf cypress/files ; npx cypress run --env allure=true  ; allure generate allure-results --clean",
+    "cy:percy": "percy exec -- cypress run"
   },
   "keywords": [
     "testing",
@@ -29,13 +31,17 @@
     "faker-br": "^0.4.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.13"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
   },
   "devDependencies": {
     "@bahmutov/cy-api": "^2.1.2",
+    "@percy/cli": "^1.2.1",
+    "@percy/cypress": "^3.1.1",
     "@shelex/cypress-allure-plugin": "^2.26.5",
     "cypress-dotenv": "^2.0.0",
     "cypress-multi-reporters": "^1.5.0",

@@ -6,6 +6,6 @@
 	"projectId": "tsrsv",
 	"screenshotsFolder": "cypress/screenshots",
 	"baseUrl": "https://playragnarokonlinebr.com/database/thor",
-	"viewportHeight": 600,
-	"viewportWidth": 1000
+	"viewportHeight": 1162,
+	"viewportWidth": 1280
 }

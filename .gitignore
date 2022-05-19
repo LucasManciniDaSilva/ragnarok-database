@@ -7,3 +7,4 @@ allure-report
 .env
 /cypress/files/api
 /cypress/screenshots
+/cypress/snapshots

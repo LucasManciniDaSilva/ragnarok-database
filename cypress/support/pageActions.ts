@@ -27,25 +27,16 @@ declare namespace Cypress {
   }
 }
 
- Cypress.Commands.add("mobileVersion", (mobile) => {
-  cy.viewport(mobile);
-  cy.visit(Cypress.config().baseUrl);
-  cy.url().should("include", "/database/thor");
-});
-
 Cypress.Commands.add("shouldCheckWeaponName", (weapon) => {
   cy.get(".armamentos.show").should("contain", weapon);
-  cy.screenshot();
 });
 
 Cypress.Commands.add("verifyErrorMessage", (message) => {
   cy.get(".title1").should("contain", message);
-  cy.screenshot();
 });
 
 Cypress.Commands.add("shouldCheckMonsterName", (monster) => {
   cy.get(".monstros.show").should("contain", monster);
-  cy.screenshot();
 });
 
 

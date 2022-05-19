@@ -1,4 +1,5 @@
 import BasePage from "../../page-objects/basePage";
+import WeaponPage from "../../page-objects/pages/WeaponPage";
 
 defineStep(/^I am on the Ragnarok Database page$/, () => {
   BasePage.loadHomepageAndCheckUrl(Cypress.config().baseUrl, "database/thor");
@@ -23,7 +24,6 @@ defineStep(/^Search monster by name Aliot/, () => {
 defineStep(
   /^I am on the Ragnarok Database page using a "([^"]*)"$/,
   (mobile) => {
-    cy.viewport(mobile);
-    BasePage.loadHomepageAndCheckUrl(Cypress.config().baseUrl, "database/thor");
+    WeaponPage.mobileType(mobile, Cypress.config().baseUrl, "database/thor");
   }
 );

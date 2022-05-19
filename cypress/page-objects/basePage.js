@@ -1,7 +1,8 @@
 export default class BasePage {
   static loadHomepageAndCheckUrl(url, text) {
-    cy.visit(url);
-    cy.url().should("include", text);
+    let currentTime = new Date(Date.UTC(2020, 1, 1)).getDate();
+    cy.clock(currentTime);
+    cy.visualRegression([1200, 1162], url, text);
   }
 
   static clickOnElementAndButtonAndCheckElement(element, button, text) {
@@ -25,7 +26,7 @@ export default class BasePage {
     cy.chooseTypeOption(type);
   }
 
-  static mobileType(mobile) {
-    cy.mobileVersion(mobile);
+  static mobileType(mobile, url, text) {
+    cy.visualRegression(mobile, url, text);
   }
 }

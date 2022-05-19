@@ -4,9 +4,18 @@ import "./app"
 import "./pageActions"
 import "./searchActions"
 import "./app"
+import '@percy/cypress'
 require("cypress-xpath");
 import { addMatchImageSnapshotCommand } from "cypress-image-snapshot/command";
-addMatchImageSnapshotCommand();
+
+addMatchImageSnapshotCommand({
+  failureThreshold: 0.01,
+  failureThresholdType: "percent",
+  customDiffConfig: {
+    threshold: 0.1,
+  },
+  capture: "viewport",
+});
 
 Cypress.on("test:after:run", (test, runnable) => {
   if (test.state === "failed") {

@@ -51,7 +51,6 @@ declare namespace Cypress {
 Cypress.Commands.add("chooseSizeOption", (size) => {
   cy.get('select[name="tamanho"]').select(size);
   cy.get('select[name="tamanho"]').should("have.value", 2);
-  cy.screenshot();
 });
 
 /**
@@ -61,7 +60,6 @@ Cypress.Commands.add("chooseSizeOption", (size) => {
 Cypress.Commands.add("chooseTypeOption", (type) => {
   cy.get('select[name="categoria"]').select(type);
   cy.get('select[name="categoria"]').should("have.value", type);
-  cy.screenshot();
 });
 
 Cypress.Commands.add("chooseCategoryType", (type) => {

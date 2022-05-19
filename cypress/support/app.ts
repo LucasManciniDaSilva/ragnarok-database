@@ -8,10 +8,29 @@ declare namespace Cypress {
     /**
      * ScrollIntoView the monster
      */
-     scrollIntoViewMonster(monster: string): Chainable<Subject>;
+    scrollIntoViewMonster(monster: string): Chainable<Subject>;
+
+    setResolution(size: ViewportPreset): Chainable<Subject>;
+
+    visualRegression(size: ViewportPreset, url: string, text: string): Chainable<Subject>;
+
   }
 }
 
+Cypress.Commands.add("setResolution", (size) => {
+    if(Cypress._.isArray(size)){
+    cy.viewport(size[0], size[1]);
+    }
+    else {
+    cy.viewport(size);
+    }
+})
+
+Cypress.Commands.add("visualRegression", (size, url, text) => {
+ cy.setResolution(size)
+ cy.visit(url);
+ cy.url().should("include", text);
+})
 
 
 /**
